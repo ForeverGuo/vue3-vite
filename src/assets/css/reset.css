@@ -1,0 +1,215 @@
+/* flex相关 */
+.flex{
+  display: flex;
+}
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-start{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-around{
+  display: flex;
+  justify-content: space-around;
+}
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* flex相关 */
+
+.none{
+  display: none;
+}
+.side{
+  width: 240px;
+  min-width: 240px;
+  height: 100%;
+  background-color: #CCCCCC;
+  overflow: hidden;
+}
+.side .scroll-box{
+  height: 100%;
+  width: 260px;
+  overflow-y: scroll;
+  padding: 20px 20px;
+  box-sizing: border-box;
+}
+.div-tip{
+  border-left: 4px solid #8CC5FF;
+  padding-left: 10px;
+  font-size: 12px;
+  color:#FFFFFF;
+  margin-bottom: 10px;
+}
+
+/* fonts图标 */
+.svg-icon {
+  width: 2em;
+  height: 2em;
+  font-size: 24px;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.iconfont:hover {
+  cursor: pointer;
+}
+/* fonts */
+
+/* 代码编辑器 */
+.vue-codemirror .CodeMirror{
+  height: 500px;
+}
+/* 代码编辑器 */
+
+/* 弹窗样式 */
+.popbox {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.popbox > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.popbox > div > div {
+  width: 650px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 20px;
+}
+.popbox .top h3 {
+  display: inline-block;
+}
+.popbox .top .iconfont{
+  float: right;
+  margin-right: 20px;
+  font-size: 20px;
+  color: #CCCCCC;
+}
+.popbox .center {
+  margin: 28px 0 40px 0;
+}
+.popbox .center > div {
+  margin-bottom: 20px;
+}
+.popbox .center > div .el-input {
+  width: 500px;
+}
+.popbox .center > div .textInput {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+.popbox .center > div .redStar {
+  color: red;
+  font-size: 18px;
+}
+.popbox .center > div > span{
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+.popbox .bottom {
+  float: right;
+}
+.popbox .bottom > .el-button {
+  padding: 10px 44px;
+}
+.popbox .bottom .confirmBtn {
+  background: #18AC8B;
+  color: #FFFFFF;
+}
+/* 弹窗样式 */
+
+/* 块内元素对齐方式 */
+.alignCenter{
+  text-align: center;
+}
+.alignRight{
+  text-align: right;
+}
+
+/* 滚动条样式 */
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+    background-color: #EEEEEE;/*//背景色*/
+}
+
+/*定义滚动条轨道 内阴影+圆角*//* 滚动槽 */
+::-webkit-scrollbar-track
+{
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    border-radius: 8px;
+    background-color: #EEEEEE;/*滚动条槽的颜色*/
+}
+
+/*定义滑块 内阴影+圆角*//* 滚动条滑块 */
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+    background-color: #CCCCCC;
+}
+/*交互时样式设置*/
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(238, 238, 238, 1);
+    width: 10px;
+    height: 10px;
+    border: 6px;
+}
+/* 两边按钮设置*/
+::-webkit-scrollbar-button {
+    width: 10px;
+    height: 10px;
+    border: 2px;
+    background: #EEEEEE;
+}
+::-webkit-scrollbar-button:horizontal:decrement:hover {
+    /*当鼠标在水平滚动条递减属性的按钮上的状态，在该文件中就只有水平方向的第一个按钮*/
+    /* decrement 表示递减的碎片 */
+    width: 10px;
+    height: 10px;
+    border: 6px;
+    background: #d3150b;
+}
+/*内层轨道，滚动条中间部分（除去）,滚动槽颜色可能会遮挡该颜色*/
+::-webkit-scrollbar-track-piece {
+    /*background: #29d32f;*/
+}
+/*两个滚动条的交汇处*/
+::-webkit-scrollbar-corner {
+    width: 10px;
+    height: 10px;
+    border: 2px;
+    background: #EEEEEE;
+}
+
+::-webkit-scrollbar-track-piece:start {
+    /*滚动条上半边或左半边*/
+    width: 10px;
+    height: 10px;
+    border: 2px;
+    background: #EEEEEE;
+}
+/* 滚动条样式 */
