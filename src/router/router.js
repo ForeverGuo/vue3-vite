@@ -50,7 +50,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   console.log(to)
-  let user = store.state.token;
+  let user = store.state.user.token;
   if (to.meta.requireLogin) {
     if (!user) {
       router.push({ path: '/login',query: { redirect: to.fullPath }})

@@ -125,6 +125,7 @@ export default {
   height: calc(100vh - 84px);
   overflow: auto;
   .el-menu {
+    width: 201px;
     .el-sub-menu {
       .el-sub-menu__title {
         padding: 0 38px;

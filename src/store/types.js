@@ -1,6 +1,3 @@
-const obj = {
-  'LOGIN': 'login',
-  'LOGOUT': 'logout'
-}
 
-export default obj;
+export const LOGIN = 'login';
+export const LOGOUT = 'logout';
