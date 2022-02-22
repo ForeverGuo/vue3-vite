@@ -1,21 +1,14 @@
 import axios from "axios";
 import store from "@/store/store";
+import router from '@/router/router'
+import { token } from '@/utils/common'
 
-let token = store.state.user.token;
-
-if(!token) {
-  const user = JSON.parse(localStorage.getItem('user'));
-  if(user.token) {
-    store.commit('LOGIN', user);
-    token = user.token;
-  }
-}
 
 const config = {
   baseUrl: "http://106.14.200.70:9000",
   timeout: 1000,
   headers: {
-    Authorization: `Basic ${token}`,
+    Authorization: `Basic ${token()}`,
     "Content-Type": "application/x-www-form-urlencoded",
   },
 };
@@ -26,6 +19,7 @@ const api = axios.create(config);
 api.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
 
 const request = function (url, params, type) {
+  config.headers.Authorization = `Basic ${token()}`
   return new Promise((resolve, reject) => {
     axios({
       method: type,
@@ -33,7 +27,9 @@ const request = function (url, params, type) {
       params,
       headers: config.headers,
     }).then((res) => {
-      resolve(res.data);
+      if(res) {
+        resolve(res.data);
+      }
     });
   });
 };
@@ -43,7 +39,7 @@ axios.interceptors.response.use(
     if (res.data.code === 13000) {
       router.push({
         path: "/login",
-        query: { redirect: router.history.current.fullPath },
+        query: { redirect: router.currentRoute.value.fullPath },
       });
       return;
     }

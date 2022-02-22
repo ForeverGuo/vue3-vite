@@ -71,7 +71,6 @@ export default {
     }
   },
   created() {
-    console.log(this.$router.options.routes)
     this.$router.options.routes.forEach((item) => {
       if (item.isElementPlus) {
         this.menuList = item.children

@@ -15,3 +15,17 @@ export const userList = (params) => {
   return post('/gelvsheng/clinical/customerGetClinucalPage', params)
 }
 
+// 用户管理数据
+export const userManager = (params) => {
+  return post('/gelvsheng/userManager/userPage', params)
+}
+
+// 管理员用户 创建新用户
+export const creataManageUser = (params) => {
+  return post('/gelvsheng/userManager/createUser', params)
+}
+
+// 创建新客户
+export const addClinucal = (params) => {
+  return post('/gelvsheng/clinical/addClinucal', params)
+}

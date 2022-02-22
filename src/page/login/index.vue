@@ -25,7 +25,7 @@ import { userLogin } from '@/api/index'
 import { ElMessage } from 'element-plus'
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import * as types from '@/store/types'
+import * as types from '@/store/types.js'
 const labelPosition = ref('right')
 const router = useRouter();
 const store = useStore();
@@ -36,9 +36,7 @@ const form = reactive({
 })
 
 const handleLogin = () => {
-  console.log(types)
   userLogin(form).then(res => {
-    console.log(res)
     if(res.code === 10000) {
       store.commit(types.LOGIN, res.data)
       router.push({

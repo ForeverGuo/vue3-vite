@@ -9,7 +9,7 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>
+            <el-dropdown-item @click.stop="handleLogout">
               <el-icon class="el-icon--right"><warning /></el-icon>
               <span>退出</span>
             </el-dropdown-item>
@@ -33,6 +33,13 @@ export default {
   methods: {
     toHome() {
       router.push({ name: 'Home' })
+    },
+    handleLogout() {
+      localStorage.removeItem('user');
+      router.push({
+        path: '/login',
+        query: { redirect: router.currentRoute.value.fullPath }
+      })
     }
   }
 }

@@ -1,8 +1,10 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import store from '@/store/store'
+import { token } from '@/utils/common'
 
 const Home = () => import('@/page/home/index.vue')
 const SubIndex = () => import('@/page/subs/SubIndex.vue')
+const SubMember = () => import('@/page/subs/SubMember.vue')
 const Login = () => import('@/page/login/index.vue')
 
 const routes = [
@@ -28,9 +30,9 @@ const routes = [
         icon: 'home-filled' 
       },
       {
-        path: '/subs/home2',
-        name: 'SubHome2',
-        component: SubIndex,
+        path: '/subs/member',
+        name: 'SubMember',
+        component: SubMember,
         desc: '用户管理',
         icon: 'avatar'
       },
@@ -49,8 +51,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  let user = store.state.user.token;
+  let user = token();
   if (to.meta.requireLogin) {
     if (!user) {
       router.push({ path: '/login',query: { redirect: to.fullPath }})
