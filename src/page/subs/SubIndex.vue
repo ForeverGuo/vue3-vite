@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="top_set">
-      <el-button type="success" size="large" style="width: 80px">新建客户</el-button>
-      <el-button type="primary" size="large" style="width: 80px">导出</el-button>
+      <el-button type="success" size="large" style="width: 80px" @click.stop="handleCreate">新建客户</el-button>
+      <el-button type="primary" size="large" style="width: 80px" @click.stop="handleExport">导出</el-button>
     </div>
     <el-table id="user_list" :data="data.table" border  height="500" style="width: 100%">
       <el-table-column prop="customerName" label="客户姓名" align="center"> </el-table-column>
@@ -22,22 +22,29 @@
 
       > </el-pagination>
     </div>
+    <AddUser ref="AddUserRef" :dialogInfo="dialogInfo" @closeDialog="closeDialog"/>
   </div>
 </template>
 <script setup>
+import AddUser from './components/addUser.vue'
 import { reactive } from "@vue/reactivity";
 import { ElMessage } from 'element-plus'
-import { adminList, userList } from '@/api'
+import { adminList, userList, exportClinical } from '@/api'
 import store from '@/store/store'
 import { onMounted } from "@vue/runtime-core";
 import { downloadUrl } from '@/utils/common'
+import { ref } from 'vue'
 
 const data = reactive({
   table: [],
   total: 100,
   size: 20,
-  page: 1
+  page: 1,
 });
+const dialogInfo = reactive({
+  isShow: false
+})
+const AddUserRef = ref(null);
 const handleCurrentChange= (index) => {
   data.page = index;
   initData();
@@ -65,6 +72,21 @@ const initData = () => {
   } else {
     userList(params).then(callback)
   }
+}
+// 导出功能
+const handleExport = () => {
+  exportClinical().then(res => {
+    console.log(res)
+    downloadUrl(JSON.stringify(res), '1111')
+  })
+}
+// 创建新用户
+const handleCreate = () => {
+  console.log(AddUserRef)
+  dialogInfo.isShow = true;
+}
+const closeDialog = () => {
+  initData();
 }
 onMounted(() => {
   initData()

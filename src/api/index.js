@@ -25,7 +25,12 @@ export const creataManageUser = (params) => {
   return post('/gelvsheng/userManager/createUser', params)
 }
 
-// 创建新客户
+// 添加新客户
 export const addClinucal = (params) => {
   return post('/gelvsheng/clinical/addClinucal', params)
+}
+
+// 导出数据
+export const exportClinical = (params) => {
+  return get('/gelvsheng/clinical/exportClinical', params)
 }

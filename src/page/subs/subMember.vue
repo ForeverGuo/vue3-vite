@@ -3,6 +3,7 @@
     <div v-if="data.table.length">
       <div class="top_set">
         <el-button type="primary" size="large" style="width: 80px"
+        @click.stop="handleCreate"
           >创建用户</el-button
         >
       </div>
@@ -48,9 +49,11 @@
     <div v-else class="empty">
       <el-empty description="暂无访问权限"></el-empty>
     </div>
+    <AddManager ref="AddManagerRef" :dialogInfo="dialogInfo" @closeDialog="closeDialog"/>
   </div>
 </template>
 <script setup>
+import AddManager from './components/addManager.vue'
 import { reactive } from "@vue/reactivity";
 import { ElMessage } from "element-plus";
 import { adminList, userList, userManager } from "@/api";
@@ -62,6 +65,9 @@ const data = reactive({
   size: 20,
   page: 1,
 });
+const dialogInfo = reactive({
+  isShow: false
+})
 const handleCurrentChange = (index) => {
   data.page = index;
   initData();
@@ -89,6 +95,13 @@ const initData = () => {
     data.table = [];
   }
 };
+// 创建用户
+const handleCreate = () => {
+  dialogInfo.isShow = true;
+}
+const closeDialog = () => {
+  initData();
+}
 onMounted(() => {
   initData();
 });
